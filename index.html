@@ -1,0 +1,105 @@
+<!DOCTYPE html> 
+    <html> 
+      
+    <head> 
+        <title>HTML Calculator Design</title> 
+      <link rel="stylesheet" href="style.css">
+    </head> 
+      
+    <body> 
+        <table id="calcu"> 
+            <tr> 
+                <td colspan="4"> 
+                    <input type="text" id="result" disabled>
+                </td>  
+            </tr> 
+      
+            <tr> 
+                <td colspan="2"><input type="button" onclick="clearInput()" value="AC"></td>
+                <td colspan="2"> <input type="button" onclick="del()" value="del"></td>
+            
+            </tr>
+
+            <tr>
+                <td><input type="button" onclick="appendNumber(7)" value="7"></td> 
+                <td><input type="button" onclick="appendNumber(8)" value="8"></td> 
+                <td><input type="button" onclick="appendNumber(9)" value="9"></td> 
+                <td><input type="button" onclick="add()" value="+"></td> 
+            </tr> 
+            <tr> 
+                <td><input type="button" onclick="appendNumber(4)" value="4"></td> 
+                <td><input type="button" onclick="appendNumber(5)" value="5"></td> 
+                <td><input type="button" onclick="appendNumber(6)" value="6"></td> 
+                <td><input type="button" onclick="subtract()" value="-"></td> 
+            </tr> 
+            <tr> 
+                <td><input type="button" onclick="appendNumber(1)" value="1"></td> 
+                <td><input type="button" onclick="appendNumber(2)" value="2"></td> 
+                <td><input type="button" onclick="appendNumber(3)" value="3"></td> 
+                <td><input type="button" onclick="multiply()"value="*"></td> 
+            </tr> 
+            <tr> 
+                <td><input type="button" onclick="appendNumber(0)" value="0"></td> 
+                <td><input type="button" onclick="appendNumber('.')" value="."></td> 
+                <td><input type="button" onclick="calculate()" value="="></td> 
+                <td><input type="button" onclick="divide()" value="/"></td> 
+            </tr> 
+        </table> 
+
+        <script>
+            let currentInput = '';
+            let currentOperator = '';
+
+            function clearInput() {
+                currentOperator = '';
+                currentInput = '';
+                document.getElementById('result').value = '';
+
+            }
+
+            function appendNumber(number) {
+                currentInput += number;
+                document.getElementById('result').value = currentInput;
+            }
+
+            function add() {
+                currentOperator = "+";
+                currentInput += currentOperator;
+                document.getElementById('result').value = currentInput;
+            }
+
+            function subtract() {
+                currentOperator = "-";
+                currentInput += currentOperator;
+                document.getElementById('result').value = currentInput;
+                }
+
+                function multiply() {
+                currentOperator = "*";
+                currentInput += currentOperator;
+                document.getElementById('result').value = currentInput;
+                }
+
+                function divide() {
+                currentOperator = "/";
+                currentInput += currentOperator;
+                document.getElementById('result').value = currentInput;
+                }
+
+                function calculate() {
+                const result = eval(currentInput);
+                document.getElementById('result').value = result;
+                currentInput.toString();
+                currentOperator = '';
+                }
+
+                function del() {
+            let display = document.getElementById("result");
+            display.value = display.value.slice(0, -1);
+            currentInput=display.value;
+        }
+
+        </script>
+    </body> 
+      
+    </html>  
